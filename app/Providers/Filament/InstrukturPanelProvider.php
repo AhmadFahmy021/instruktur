@@ -52,6 +52,9 @@ class InstrukturPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->resources([
+                \App\Filament\Resources\KategoriResource::class, // Tambahkan resource di panel admin
             ]);
     }
 }
