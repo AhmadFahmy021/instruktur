@@ -9,4 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateKategori extends CreateRecord
 {
     protected static string $resource = KategoriResource::class;
+
+    public function getRedirectUrl() : string {
+        return static::getResource()::getUrl('index');
+    }
 }

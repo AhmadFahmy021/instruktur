@@ -6,6 +6,7 @@ use App\Filament\Resources\KategoriResource\Pages;
 use App\Filament\Resources\KategoriResource\RelationManagers;
 use App\Models\Kategori;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -18,13 +19,15 @@ class KategoriResource extends Resource
 {
     protected static ?string $model = Kategori::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
+
+    protected static ?string $navigationLabel = 'Kategori';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('nama')->label('Nama Kategori'),
             ]);
     }
 
