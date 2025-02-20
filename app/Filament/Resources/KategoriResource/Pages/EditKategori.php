@@ -10,6 +10,11 @@ class EditKategori extends EditRecord
 {
     protected static string $resource = KategoriResource::class;
 
+    protected function getRedirectUrl(): string
+    {
+        return url('/instruktur/kategoris'); // Redirect setelah berhasil membuat data
+    }
+
     protected function getHeaderActions(): array
     {
         return [
