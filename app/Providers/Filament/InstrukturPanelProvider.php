@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\Instruktur;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -52,6 +53,7 @@ class InstrukturPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                Instruktur::class,
             ])
             ->resources([
                 \App\Filament\Resources\KategoriResource::class,
