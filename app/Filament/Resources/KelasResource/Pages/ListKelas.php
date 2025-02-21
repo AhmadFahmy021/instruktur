@@ -5,6 +5,7 @@ namespace App\Filament\Resources\KelasResource\Pages;
 use App\Filament\Resources\KelasResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Contracts\Support\Htmlable;
 
 class ListKelas extends ListRecords
 {
@@ -15,5 +16,10 @@ class ListKelas extends ListRecords
         return [
             Actions\CreateAction::make(),
         ];
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        return 'Kelas';
     }
 }

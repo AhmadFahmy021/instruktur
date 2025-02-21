@@ -15,14 +15,16 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 
 class AkunResource extends Resource
 {
     protected static ?string $model = Akun::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
 
+    protected static ? int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -46,7 +48,7 @@ class AkunResource extends Resource
                     ])
                     ->default('close')
                     ->required(),
-                
+
                 Select::make('saldo_normal')
                 ->label('Saldo Normal')
                 ->options([
@@ -78,7 +80,14 @@ class AkunResource extends Resource
             ])
             ->actions([
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()->successNotificationTitle('Data akun berhasil dihapus!')->action(function ($record) {
+                    $record->delete();
+
+                    Notification::make()
+                        ->title('Data akun berhasil dihapus!')
+                        ->success()
+                        ->send();
+                }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\AkunResource\Pages;
+namespace App\Filament\Resources\Admin\KelolaInstrukturResource\Pages;
 
-use App\Filament\Resources\AkunResource;
+use App\Filament\Resources\Admin\KelolaInstrukturResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Contracts\Support\Htmlable;
 
-class CreateAkun extends CreateRecord
+class CreateKelolaInstruktur extends CreateRecord
 {
-    protected static string $resource = AkunResource::class;
+    protected static string $resource = KelolaInstrukturResource::class;
 
     public function getRedirectUrl() : string {
         return static::getResource()::getUrl('index');

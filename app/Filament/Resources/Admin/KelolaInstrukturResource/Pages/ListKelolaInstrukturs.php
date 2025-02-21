@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\AkunResource\Pages;
+namespace App\Filament\Resources\Admin\KelolaInstrukturResource\Pages;
 
-use App\Filament\Resources\AkunResource;
+use App\Filament\Resources\Admin\KelolaInstrukturResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Contracts\Support\Htmlable;
 
-class ListAkuns extends ListRecords
+class ListKelolaInstrukturs extends ListRecords
 {
-    protected static string $resource = AkunResource::class;
+    protected static string $resource = KelolaInstrukturResource::class;
 
     protected function getHeaderActions(): array
     {

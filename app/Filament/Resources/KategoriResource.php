@@ -8,6 +8,7 @@ use App\Models\Kategori;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -22,6 +23,8 @@ class KategoriResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
 
     protected static ?string $navigationLabel = 'Kategori';
+
+    protected static ? int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -42,7 +45,14 @@ class KategoriResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()->successNotificationTitle('Data kategori berhasil dihapus!')->action(function ($record) {
+                    $record->delete();
+
+                    Notification::make()
+                        ->title('Data kategori berhasil dihapus!')
+                        ->success()
+                        ->send();
+                }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

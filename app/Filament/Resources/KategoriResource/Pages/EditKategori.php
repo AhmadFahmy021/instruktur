@@ -5,20 +5,22 @@ namespace App\Filament\Resources\KategoriResource\Pages;
 use App\Filament\Resources\KategoriResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditKategori extends EditRecord
 {
     protected static string $resource = KategoriResource::class;
 
-    protected function getRedirectUrl(): string
-    {
-        return url('/instruktur/kategoris'); // Redirect setelah berhasil membuat data
+    public function getRedirectUrl() : string {
+        return static::getResource()::getUrl('index');
     }
 
-    protected function getHeaderActions(): array
+    public function getSaveNotificationTitle() : string {
+        return 'Data kategori berhasil diubah!';
+    }
+
+    public function getTitle(): string|Htmlable
     {
-        return [
-            Actions\DeleteAction::make(),
-        ];
+        return 'Kategori';
     }
 }
