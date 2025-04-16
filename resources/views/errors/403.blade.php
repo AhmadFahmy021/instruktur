@@ -28,7 +28,7 @@
                 </form>
             @elseif (Auth::user()->role == '2')
                 <!-- Tombol Kembali ke Dashboard -->
-                <a href="{{ route('filament.admin.pages.dashboard') }}"
+                <a href="{{ route('filament.instruktur.pages.dashboard') }}"
                 class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                     Kembali ke Dashboard
                 </a>
