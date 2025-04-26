@@ -12,7 +12,7 @@ RUN apk add --no-cache \
     libpng \
     freetype-dev \
     libjpeg-turbo-dev \
-    ice-dev \
+    icu-dev \
     libpng-dev \
     nodejs \
     npm \
@@ -53,7 +53,7 @@ RUN apk add --no-cache \
     libpng \
     freetype-dev \
     libjpeg-turbo-dev \
-    ice-dev \
+    icu-dev \
     libpng-dev \
     oniguruma-dev \
     gettext-dev \
