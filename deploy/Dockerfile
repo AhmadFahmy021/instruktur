@@ -12,11 +12,12 @@ RUN apk add --no-cache \
     libpng \
     freetype-dev \
     libjpeg-turbo-dev \
+    ice-dev \
     libpng-dev \
     nodejs \
     npm \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install zip pdo pdo_mysql \
+    && docker-php-ext-install zip pdo pdo_mysql intl \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-enable gd
@@ -52,13 +53,14 @@ RUN apk add --no-cache \
     libpng \
     freetype-dev \
     libjpeg-turbo-dev \
+    ice-dev \
     libpng-dev \
     oniguruma-dev \
     gettext-dev \
     freetype-dev \
     nginx \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install zip pdo pdo_mysql \
+    && docker-php-ext-install zip pdo pdo_mysql intl \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-enable gd \
