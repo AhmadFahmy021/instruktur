@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+    akuntansi-panel:
+        restart: unless-stopped
+        container_name: akuntansi-panel-v1
+        build:
+            context: ../
+            dockerfile: ./deploy-panel/Dockerfile
+        # allocate as many volumes as necessary, if needed.
+        volumes:
+            - ../storage/app:/var/www/html/storage/app
+        entrypoint: ["/var/www/html/deploy-panel/entrypoint.sh"]
+        environment:
+            APP_NAME: ${APP_NAME}
+            APP_ENV: ${APP_ENV}
+            APP_DEBUG: ${APP_DEBUG}
+            APP_KEY: ${APP_KEY}
+            APP_VERSION: ${APP_VERSION}
+            APP_URL: ${APP_URL}
+            DB_CONNECTION: pgsql
+            DB_HOST: ${DB_HOST}
+            DB_PORT: ${DB_PORT}
+            DB_DATABASE: ${DB_DATABASE}
+            DB_USERNAME: ${DB_USERNAME}
+            DB_PASSWORD: ${DB_PASSWORD}
+            MAIL_MAILER: ${MAIL_MAILER}
+            MAIL_HOST: ${MAIL_HOST}
+            MAIL_PORT: ${MAIL_PORT}
+            MAIL_USERNAME: ${MAIL_USERNAME}
+            MAIL_PASSWORD: ${MAIL_PASSWORD}
+            MAIL_ENCRYPTION: ${MAIL_ENCRYPTION}
+            MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS}
+            MAIL_FROM_NAME: ${MAIL_FROM_NAME}
+            JWT_SECRET: ${JWT_SECRET}
+        ports:
+            - "8050:80"
+        networks:
+            - n-laravel
+
+volumes:
+    v-database:
+
+networks:
+    n-laravel:
+        driver: bridge

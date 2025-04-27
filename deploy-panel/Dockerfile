@@ -76,10 +76,12 @@ RUN apk add --no-cache \
 
 # copy files from the build stage
 COPY --from=build /var/www/html /var/www/html
-COPY ./deploy/nginx.conf /etc/nginx/http.d/default.conf
-COPY ./deploy/php.ini "$PHP_INI_DIR/conf.d/app.ini"
+COPY ./deploy-panel/nginx.conf /etc/nginx/http.d/default.conf
+COPY ./deploy-panel/php.ini "$PHP_INI_DIR/conf.d/app.ini"
 
 WORKDIR /var/www/html
+COPY ./deploy-panel/entrypoint.sh /var/www/html/deploy-panel/entrypoint.sh
+RUN chmod +x /var/www/html/deploy-panel/entrypoint.sh
 
 # add all folders where files are being stored that require persistence. if needed, otherwise remove this line.
 VOLUME ["/var/www/html/storage/app"]
