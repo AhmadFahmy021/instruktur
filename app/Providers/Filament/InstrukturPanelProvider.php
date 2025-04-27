@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\FilamentAuthenticationWeb;
 use App\Http\Middleware\Instruktur;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -50,9 +51,10 @@ class InstrukturPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-            ])
+                ])
             ->authMiddleware([
-                Authenticate::class,
+                // Authenticate::class,
+                FilamentAuthenticationWeb::class,
                 Instruktur::class,
             ])
             ->resources([

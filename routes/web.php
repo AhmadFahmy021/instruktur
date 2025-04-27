@@ -6,5 +6,5 @@ Route::get('/', function () {
     return redirect('instruktur/login');
 });
 // Route::get('/', function () {
-//     return redirect('instruktur/login');
+//     return view('welcome');
 // });

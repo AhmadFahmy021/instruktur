@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\FilamentAuthenticationWeb;
 use App\Http\Middleware\Instruktur;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -30,6 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->authGuard('web')
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -53,9 +55,11 @@ class AdminPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
-                Authenticate::class,
+                // Authenticate::class,
+                FilamentAuthenticationWeb::class,
                 Admin::class,
             ])
+
             ->resources([
                 \App\Filament\Resources\KategoriResource::class,
                 \App\Filament\Resources\AkunResource::class,
