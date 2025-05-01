@@ -32,7 +32,7 @@ services:
             MAIL_ENCRYPTION: ${MAIL_ENCRYPTION}
             MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS}
             MAIL_FROM_NAME: ${MAIL_FROM_NAME}
-            JWT_SECRET: ${JWT_SECRET}
+            
         ports:
             - "8050:80"
         networks:

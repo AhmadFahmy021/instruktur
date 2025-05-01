@@ -1,0 +1,12 @@
+node_modules
+vendor
+.git/
+*.git*
+.idea
+.vscode
+storage/*.key
+.env
+.env.*
+!.env.example
+!.env.production
+bootstrap/cache/*
